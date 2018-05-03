@@ -15,11 +15,10 @@ const deploy = async () => {
     console.log('Attempting to deploy from account', accounts[0]);
 
     const result = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
-    .deploy({ data: compiledFactory.bytecode })
-    .send({ from: accounts[0], gas: '4723880' });
+    .deploy({ data: '0x' + compiledFactory.bytecode })
+    .send({ from: accounts[0], gas: '1000000' });
 
     //console.log(compiledFactory.interface);
-    console.log('Contract deployed to', result.options.address);    
-
+    console.log('Contract deployed to', result.options.address); 
 };
 deploy();
